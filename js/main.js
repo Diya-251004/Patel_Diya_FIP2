@@ -1,81 +1,89 @@
-document.addEventListener('DOMContentLoaded', function() {
-    // Mobile menu toggle
-    const menuIcon = document.getElementById('icon');
-    const menu = document.getElementById('menu');
-    
-    if (menuIcon && menu) {
-      menuIcon.addEventListener('click', function() {
-        menu.classList.toggle('show');
-      });
-    }
+// Initialize when document is ready
+const init = () => {
+  // Handle mobile menu toggle
+  const navToggle = document.querySelector('#icon');
+  const navMenu = document.querySelector('#menu');
   
-    // Testimonial slider
-    const testimonials = document.querySelectorAll('.testimonial');
-    let currentTestimonial = 0;
+  if (navToggle && navMenu) {
+    navToggle.onclick = () => {
+      navMenu.classList.toggle('show');
+    };
+  }
+
+  // Manage testimonial rotation
+  const customerReviews = document.querySelectorAll('.testimonial');
+  let activeReviewIndex = 0;
+  
+  const displayReview = (index) => {
+    customerReviews.forEach(review => {
+      review.classList.remove('active');
+    });
     
-    function showTestimonial(index) {
-      testimonials.forEach(testimonial => {
-        testimonial.classList.remove('active');
-      });
+    customerReviews[index].classList.add('active');
+    activeReviewIndex = index;
+  };
+
+  // Auto-advance reviews if they exist
+  if (customerReviews.length) {
+    setInterval(() => {
+      activeReviewIndex = (activeReviewIndex + 1) % customerReviews.length;
+      displayReview(activeReviewIndex);
+    }, 5000);
+  }
+
+  // Configure back-to-top button
+  const topButton = document.querySelector('#backToTop');
+  
+  window.onscroll = () => {
+    topButton.style.display = window.scrollY > 300 ? 'block' : 'none';
+  };
+
+  topButton.onclick = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
+
+  // Handle cart interactions
+  const cartButtons = document.querySelectorAll('.add-to-cart');
+  const cartDisplay = document.querySelector('.cart-count');
+  let itemsInCart = 0;
+  
+  cartButtons.forEach(btn => {
+    btn.onclick = function() {
+      itemsInCart++;
+      cartDisplay.textContent = itemsInCart;
       
-      testimonials[index].classList.add('active');
-      currentTestimonial = index;
-    }
-  
-    // Auto-rotate testimonials
-    if (testimonials.length > 0) {
-      setInterval(() => {
-        currentTestimonial = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(currentTestimonial);
-      }, 5000);
-    }
-  
-    // Back to top button
-    const backToTopButton = document.getElementById('backToTop');
-    
-    window.addEventListener('scroll', function() {
-      if (window.pageYOffset > 300) {
-        backToTopButton.style.display = 'block';
-      } else {
-        backToTopButton.style.display = 'none';
-      }
-    });
-  
-    backToTopButton.addEventListener('click', function() {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-      });
-    });
-  
-    // Add to cart functionality
-    const addToCartButtons = document.querySelectorAll('.add-to-cart');
-    const cartCount = document.querySelector('.cart-count');
-    let count = 0;
-    
-    addToCartButtons.forEach(button => {
-      button.addEventListener('click', function() {
-        count++;
-        cartCount.textContent = count;
-        
-        // Add animation
-        this.textContent = 'Added!';
-        this.style.backgroundColor = '#4CAF50';
-        
-        setTimeout(() => {
-          this.textContent = 'Add to Cart';
-          this.style.backgroundColor = '';
-        }, 1000);
-      });
-    });
-  
-    // Form submission
-    const contactForm = document.querySelector('.contact-form form');
-    if (contactForm) {
-      contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        alert('Thank you for your message! We will get back to you soon.');
-        this.reset();
-      });
+      // Visual feedback
+      this.textContent = 'Added!';
+      this.style.backgroundColor = '#4CAF50';
+      
+      setTimeout(() => {
+        this.textContent = 'Add to Cart';
+        this.style.backgroundColor = '';
+      }, 1000);
+    };
+  });
+
+  // Process contact form
+  const messageForm = document.querySelector('.contact-form form');
+  if (messageForm) {
+    messageForm.onsubmit = function(e) {
+      e.preventDefault();
+      alert('Thank you for your message! We will get back to you soon.');
+      this.reset();
+    };
+  }
+};
+
+// Start the application
+if (document.readyState !== 'loading') {
+  init();
+} else {
+  document.addEventListener('readystatechange', () => {
+    if (document.readyState === 'complete') {
+      init();
     }
   });
+}
