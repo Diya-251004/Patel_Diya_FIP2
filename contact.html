@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | SqueezeIt</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <nav class="main-nav">
+    <a href="index.html" class="logo"><img src="images/logo.svg" alt="SqueezeIt Logo"></a>
+    <ul id="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Our Juices</a></li>
+      <li><a class="active" href="contact.html">Contact</a></li>
+      <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i> <span class="cart-count">0</span></a></li>
+    </ul>
+    <label id="icon">
+      <i class="fa fa-bars"></i>
+    </label>
+  </nav>
+
+  <main class="contact-main">
+    <section class="contact-header">
+      <h1>Get In Touch</h1>
+      <p>We'd love to hear from you</p>
+    </section>
+
+    <section class="contact-container">
+      <div class="contact-form">
+        <h2>Send Us a Message</h2>
+        <form>
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required>
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required>
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+
+      <div class="contact-info">
+        <h2>Contact Information</h2>
+        <div class="info-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <p>123 Juice Street, Freshtown</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-phone"></i>
+          <p>(555) 123-4567</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-envelope"></i>
+          <p>hello@squeezeit.com</p>
+        </div>
+        <div class="info-item">
+          <i class="fas fa-clock"></i>
+          <p>Monday - Friday: 9am - 6pm</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-section about">
+        <h3>About SqueezeIt</h3>
+        <p>We're passionate about bringing you the freshest, most nutritious cold-pressed juices.</p>
+      </div>
+      <div class="footer-section links">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="products.html">Our Juices</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section contact">
+        <h3>Contact</h3>
+        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+        <p><i class="fas fa-envelope"></i> hello@squeezeit.com</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 SqueezeIt | Fresh Organic Juices
+    </div>
+  </footer>
+
+  <button id="backToTop" title="Go to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
