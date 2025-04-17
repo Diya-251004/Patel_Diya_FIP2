@@ -1,6 +1,4 @@
-// Initialize when document is ready
 const init = () => {
-  // Handle mobile menu toggle
   const navToggle = document.querySelector('#icon');
   const navMenu = document.querySelector('#menu');
   
@@ -10,7 +8,6 @@ const init = () => {
     };
   }
 
-  // Manage testimonial rotation
   const customerReviews = document.querySelectorAll('.testimonial');
   let activeReviewIndex = 0;
   
@@ -23,7 +20,6 @@ const init = () => {
     activeReviewIndex = index;
   };
 
-  // Auto-advance reviews if they exist
   if (customerReviews.length) {
     setInterval(() => {
       activeReviewIndex = (activeReviewIndex + 1) % customerReviews.length;
@@ -31,7 +27,6 @@ const init = () => {
     }, 5000);
   }
 
-  // Configure back-to-top button
   const topButton = document.querySelector('#backToTop');
   
   window.onscroll = () => {
@@ -45,7 +40,6 @@ const init = () => {
     });
   };
 
-  // Handle cart interactions
   const cartButtons = document.querySelectorAll('.add-to-cart');
   const cartDisplay = document.querySelector('.cart-count');
   let itemsInCart = 0;
@@ -54,8 +48,6 @@ const init = () => {
     btn.onclick = function() {
       itemsInCart++;
       cartDisplay.textContent = itemsInCart;
-      
-      // Visual feedback
       this.textContent = 'Added!';
       this.style.backgroundColor = '#4CAF50';
       
@@ -66,7 +58,6 @@ const init = () => {
     };
   });
 
-  // Process contact form
   const messageForm = document.querySelector('.contact-form form');
   if (messageForm) {
     messageForm.onsubmit = function(e) {
@@ -77,7 +68,6 @@ const init = () => {
   }
 };
 
-// Start the application
 if (document.readyState !== 'loading') {
   init();
 } else {
